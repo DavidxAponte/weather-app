@@ -1,0 +1,62 @@
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    color:#fff;
+}
+
+h2{
+    color: #fff;
+}
+
+.h-card{
+    align-items: center;
+    background-color:#1e213a;
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1 1 350px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.h-title{
+    font-weight: 500;
+}
+
+.h-body{
+    color:#e7e7eb;
+}
+
+.h-number{
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.h-number{
+ font-size: 2rem;
+}
+
+.percentage-bar{
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.25rem;
+    width: 80%;
+}
+
+.bar-header{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    font-weight: 700;
+}
+
+.bar{
+    background-color: #e7e7eb;
+    border-radius: 1rem;
+    height: 0.5rem;
+    overflow: hidden;
+}
+
+.flex-end{
+    align-self: flex-end;
+}

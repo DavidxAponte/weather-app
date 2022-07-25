@@ -1,0 +1,32 @@
+.forecast-container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.forecast-card{
+    background-color: #1e213a;
+    text-align: center;
+    padding: 1rem;
+    flex: 1 1 auto;
+    color: #fff;
+}
+
+.forecast-card-temp{
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    font-weight: 500;
+    gap:10px;
+}
+
+.min-temp{
+    font-size: 1.25rem;
+    color: #a09fb1;
+}
+
+.max-temp{
+    font-size: 1.25rem; 
+}

@@ -1,0 +1,34 @@
+.wrapper-header{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.btn{
+    background: transparent;
+    border: none;
+    color: #e7e7eb;
+    cursor: pointer;
+    outline: none;
+    padding: 0.5rem;
+    transition: all .2s ease;
+}
+
+.btn-rounded{
+    align-items: center;
+    background-color: #585676;
+    border-radius: 100%;
+    display: flex;
+    font-weight: 700;
+    height: 2.5rem;
+    justify-content: center;
+    margin: 0 0.5rem;
+    width: 2.5rem;
+}
+
+.active{
+    background-color: #e7e7eb;
+    color: #110e3c;
+}

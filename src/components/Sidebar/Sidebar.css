@@ -1,0 +1,120 @@
+:root {
+    --light-navy-color: #1e213a;
+    --navy-color: #100e1d;
+}
+
+
+.sidebarContainer{
+    background-color: var(--light-navy-color) ;
+    color: #fff;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    overflow: hidden;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    max-height: 100vh;
+}
+
+
+@media only screen and (max-width: 800px) {
+    .sidebarContainer{
+        background-color: var(--light-navy-color) ;
+        color: #fff;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        overflow: hidden;
+        text-align: center;
+        position: relative;
+        top: 0;
+        height: auto;
+        max-height: 100vh;
+    }
+}
+
+.headerSidebar{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.btnAside{
+    background: transparent;
+    border: none;
+    color: #e7e7eb;
+    cursor: pointer;
+    outline: none;
+    padding: 0.5rem;
+    transition: all .2s ease;
+}
+
+.btn-primary{
+    background-color: #6e707a;
+}
+
+.btn-rounded{
+    align-items: center;
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    padding: 0.5rem;
+    width: 25px;
+    height: 25px;
+    background-color: #6e707a;
+}
+
+.weather-status{
+    flex: 0 1 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.img-bg{
+    position: absolute;
+    opacity: .25;
+    left: 0;
+    right: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+.w-icon{
+    width: 125px;
+}
+
+.weather-info{
+    padding: 1rem;
+}
+
+.temp{
+    color: #e7e7eb;
+    font-size: 8rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.current-condition{
+    color: #a09fb1;
+    margin: 0;
+}
+
+.current-location{
+    color: #88869d;
+}
+
+.mapIcon{
+    width: 25px;
+    height: 25px;
+}
+
+.city{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}

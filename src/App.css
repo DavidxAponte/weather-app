@@ -1,0 +1,23 @@
+.mainContainer {
+    display: grid;
+    grid-template-columns: 450px 1fr;
+}
+
+@media only screen and (max-width: 800px) {
+        .mainContainer {
+        display: grid;
+        grid-template-columns:1fr;
+    }
+  }
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 1000px;
+    width: 85%;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column nowrap;
+    height: 100%;
+}
+

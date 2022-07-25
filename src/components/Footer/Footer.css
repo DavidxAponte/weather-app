@@ -1,0 +1,14 @@
+.footer-container{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    color:#fff;
+    justify-content: center;
+}
+
+a{
+    text-decoration: none;
+    color:#fff;
+    align-self: center;
+    font-weight: bold;
+}
