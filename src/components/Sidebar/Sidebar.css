@@ -62,9 +62,15 @@ input{
 }
 
 .search-results{
-    color: #a09fb1;
+    color: #ccc;
     text-align: center;
     margin-top: 2rem;
+}
+
+.cityResult{
+    font-size: 30px;
+    font-weight: 300;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .activeSearch{
@@ -102,6 +108,10 @@ input{
         top: 0;
         height: auto;
         max-height: 100vh;
+    }
+    .search-nav{
+        width: 90%;
+      
     }
 }
 
