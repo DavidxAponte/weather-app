@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect} from 'react';
+import React, {useRef, useEffect} from 'react';
 import './Sidebar.css';
 import locationIcon from './location.svg'
 import sideBackground from './Cloud-background.png'
@@ -9,17 +9,26 @@ import ApiKey from '../../api/ApiKey';
 import cityList from "../../api/city.list.json"
 
 
-export default function Sidebar(){
+export default function Sidebar({
+  city,
+  setCity,
+  temp,
+  setTemp,
+  weather,
+  setWeather,
+  icon,
+  setIcon,
+  date,
+  setDate,
+  cityResult,
+  setCityResult,
+  whichTemp
+}){
     const navSearch = useRef();
     const searchResultRef = useRef();
     const cityValue = useRef();
 
-    const [city, setCity] = useState("Not Found")
-    const [temp, setTemp] = useState("00");
-    const [weather, setWeather] = useState("Not Found");
-    const [icon, setIcon]  = useState("http://openweathermap.org/img/wn/10d@2x.png")
-    const [date, setDate] = useState("Not Found");
-    const [cityResult, setCityResult] = useState("Search for the city of your choice.")
+  
 
     useEffect(() => {
      getMyLocation();
@@ -43,7 +52,12 @@ export default function Sidebar(){
      let result = Math.round(1.8 * (kelvin-273) + 32)
      return result;
    }
-    
+
+   const convertFtoC = (temp) =>{
+    let result = Math.round((temp-32) / 1.8);
+    return result  
+  } 
+
    const myDate = new Date().toDateString();
  
     
@@ -90,9 +104,8 @@ export default function Sidebar(){
 
       getCityWeather(cityInfo);
 
-      setTimeout(displaySearch,1000);
-
-      setTimeout(displaySearch,1000);
+     setTimeout(displaySearch,1000);
+     setTimeout(displaySearch,1000);
 
      } else{
       setCityResult(`${city} Not Found`)
@@ -118,8 +131,12 @@ export default function Sidebar(){
     console.log("cityName: ", json.name);
      
      setCity(json.name);
-     let farenheit = convertKtoF(json.main.temp)
-     setTemp(`${farenheit}°F`);
+     let farenheit = convertKtoF(json.main.temp);
+     
+     let celsius = convertFtoC(farenheit);
+     
+     whichTemp ? setTemp(`${farenheit}°F`) : setTemp(`${celsius}°C`);
+
      setWeather(json.weather[0].description)
      setIcon(`http://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`)
      setDate(myDate)
