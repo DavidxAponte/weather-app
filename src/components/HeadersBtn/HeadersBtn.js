@@ -1,10 +1,28 @@
 import React,{useRef, useEffect} from 'react'
 import './HeadersBtn.css'
 
-export default function HeaderBtn({temp,setTemp,setWhichTemp}) {
+export default function HeaderBtn({
+  temp,
+  setTemp,
+  setWhichTemp,
+  maxTomorrow,
+  minTomorrow,
+  maxOvermorrow,
+  minOvermorrow,
+  maxAftermorrow,
+  minAftermorrow,
+  setMaxTomorrow,
+  setMinTomorrow,
+  setMaxOvermorrow,
+  setMinOvermorrow,
+  setMaxAftermorrow,
+  setMinAftermorrow
+}) {
   const celiusBtnRef = useRef();
   const fahrenheitBtnRef = useRef();
-  
+  const regexTemp = /\d/g
+
+
   useEffect(()=>{
     fahrenheitBtnRef.current.disabled = true;
   },[])
@@ -23,6 +41,33 @@ export default function HeaderBtn({temp,setTemp,setWhichTemp}) {
 
       celiusBtnRef.current.disabled = true;
       
+      //console.log("this is the Max Temp tomorrow value", maxTomorrow)
+
+      let tempMaxTomorrow = parseInt(maxTomorrow.match(regexTemp).join(""),10)
+      tempMaxTomorrow = convertFtoC(tempMaxTomorrow);
+      setMaxTomorrow(`${tempMaxTomorrow}°C`);
+
+      let tempMinTomorrow = parseInt(minTomorrow.match(regexTemp).join(""),10)
+      tempMinTomorrow = convertFtoC(tempMinTomorrow);
+      setMinTomorrow(`${tempMinTomorrow}°C`);
+
+      let tempMaxOvermorrow = parseInt(maxOvermorrow.match(regexTemp).join(""),10)
+      tempMaxOvermorrow = convertFtoC(tempMaxOvermorrow);
+      setMaxOvermorrow(`${tempMaxOvermorrow}°C`)
+      
+      let tempMinOvermorrow = parseInt(minOvermorrow.match(regexTemp).join(""),10)
+      tempMinOvermorrow = convertFtoC(tempMinOvermorrow);
+      setMinOvermorrow(`${tempMinOvermorrow}°C`)
+
+      let tempMaxAftermorrow = parseInt(maxAftermorrow.match(regexTemp).join(""),10)
+      tempMaxAftermorrow = convertFtoC(tempMaxAftermorrow)
+      setMaxAftermorrow(`${tempMaxAftermorrow}°C`)
+
+      let tempMinAftermorrow = parseInt(minAftermorrow.match(regexTemp).join(""),10)
+      tempMinAftermorrow = convertFtoC(tempMinAftermorrow)
+      setMinAftermorrow(`${tempMinAftermorrow}°C`)
+      
+
       setWhichTemp(false);
   } 
 
@@ -40,7 +85,35 @@ export default function HeaderBtn({temp,setTemp,setWhichTemp}) {
 
     fahrenheitBtnRef.current.disabled = true;
 
+      let tempMaxTomorrow = parseInt(maxTomorrow.match(regexTemp).join(""),10)
+      tempMaxTomorrow = convertCtoF(tempMaxTomorrow);
+      setMaxTomorrow(`${tempMaxTomorrow}°F`);
+
+      let tempMinTomorrow = parseInt(minTomorrow.match(regexTemp).join(""),10)
+      tempMinTomorrow = convertCtoF(tempMinTomorrow);
+      setMinTomorrow(`${tempMinTomorrow}°F`);
+
+      let tempMaxOvermorrow = parseInt(maxOvermorrow.match(regexTemp).join(""),10)
+      tempMaxOvermorrow = convertCtoF(tempMaxOvermorrow);
+      setMaxOvermorrow(`${tempMaxOvermorrow}°F`)
+
+      let tempMinOvermorrow = parseInt(minOvermorrow.match(regexTemp).join(""),10)
+      tempMinOvermorrow = convertCtoF(tempMinOvermorrow);
+      setMinOvermorrow(`${tempMinOvermorrow}°F`)
+
+      let tempMaxAftermorrow = parseInt(maxAftermorrow.match(regexTemp).join(""),10)
+      tempMaxAftermorrow = convertCtoF(tempMaxAftermorrow)
+      setMaxAftermorrow(`${tempMaxAftermorrow}°F`)
+
+      let tempMinAftermorrow = parseInt(minAftermorrow.match(regexTemp).join(""),10)
+      tempMinAftermorrow = convertCtoF(tempMinAftermorrow)
+      setMinAftermorrow(`${tempMinAftermorrow}°F`)
+
+
     setWhichTemp(true);
+
+
+
   }
 
   const convertFtoC = (temp) =>{

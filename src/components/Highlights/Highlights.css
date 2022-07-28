@@ -27,21 +27,51 @@ h2{
     color:#e7e7eb;
 }
 
+.hNumber{
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
 .h-number{
     font-size: 4rem;
     font-weight: 700;
 }
 
-.h-number{
- font-size: 2rem;
-}
 
 .percentage-bar{
     display: flex;
     flex-flow: column nowrap;
     gap: 0.25rem;
-    width: 80%;
+    width: 100%;
+    
 }
+
+.percentage-bar p{
+    display: flex;
+    margin-top:0;
+    margin-bottom: 0;
+    justify-content: space-between;
+}
+
+.percentage-bar  p .zeroBar{
+    font-weight: bold;
+}
+
+.percentage-bar p .fiftyBar{
+    font-weight: bold;
+}
+
+.percentage-bar p .hundredBar{
+    font-weight: bold;
+}
+
+.percentage-bar progress{
+    align-self: center;
+    height: 30px;
+    width: 100%;
+}
+
+
 
 .bar-header{
     display: flex;
@@ -55,8 +85,4 @@ h2{
     border-radius: 1rem;
     height: 0.5rem;
     overflow: hidden;
-}
-
-.flex-end{
-    align-self: flex-end;
 }
