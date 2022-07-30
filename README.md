@@ -39,6 +39,7 @@ This app can be able to show the current weather and a forecast of any city in t
 Developed by  **David Enrique Aponte Arias**.
 
 LinkedIn  https://www.linkedin.com/in/david-enrique-aponte/
+
 Portfolio  http://davidaponte.tk/
 
 **Front End Developer / Desarrolador Web Front End**
