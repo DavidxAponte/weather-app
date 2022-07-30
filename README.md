@@ -34,6 +34,8 @@ This app can be able to show the current weather and a forecast of any city in t
 
 **ReactJs**:  https://reactjs.org/
 
+**Axios**: https://github.com/axios/axios
+
 ## AUTHOR
 
 Developed by  **David Enrique Aponte Arias**.
