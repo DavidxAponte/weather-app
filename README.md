@@ -32,7 +32,7 @@ This app can be able to show the current weather and a forecast of any city in t
 
 ## USED TECHNOLOGIES
 
-**ReactJs**:  [https://reactjs.org/
+**ReactJs**:  https://reactjs.org/
 
 ## AUTHOR
 
