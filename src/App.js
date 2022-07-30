@@ -5,7 +5,6 @@ import HeaderBtn from './components/HeadersBtn/HeadersBtn';
 import Widget from './components/Widget/Widget';
 import Higlights from './components/Highlights/Highlights';
 import Footer from './components/Footer/Footer';
-import userEvent from '@testing-library/user-event';
 
 export default function App() {
   
@@ -32,7 +31,8 @@ export default function App() {
     const [minOvermorrow, setMinOvermorrow] = useState(0);
     const [maxAftermorrow, setMaxAftermorrow] = useState(0);
     const [minAftermorrow, setMinAftermorrow] = useState(0);
-
+    const [btnCities, setBtnCities]  = useState("");
+    const [cityInfoList, setCityInfoList] = useState("");
 
   return (
     <div className='mainContainer'>
@@ -68,6 +68,10 @@ export default function App() {
      setMinOvermorrow={setMinOvermorrow}
      setMaxAftermorrow={setMaxAftermorrow}
      setMinAftermorrow={setMinAftermorrow}
+     btnCities={btnCities}
+     setBtnCities={setBtnCities}
+     cityInfoList={cityInfoList}
+     setCityInfoList={setCityInfoList}
      />
      <div className='wrapper'>
       <HeaderBtn
@@ -86,6 +90,8 @@ export default function App() {
       setMinOvermorrow={setMinOvermorrow}
       setMaxAftermorrow={setMaxAftermorrow}
       setMinAftermorrow={setMinAftermorrow}
+      setBtnCities={setBtnCities}
+      
 
       />
       <Widget

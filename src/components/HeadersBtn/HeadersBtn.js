@@ -16,7 +16,8 @@ export default function HeaderBtn({
   setMaxOvermorrow,
   setMinOvermorrow,
   setMaxAftermorrow,
-  setMinAftermorrow
+  setMinAftermorrow,
+  setBtnCities,
 }) {
   const celiusBtnRef = useRef();
   const fahrenheitBtnRef = useRef();
@@ -27,7 +28,12 @@ export default function HeaderBtn({
     fahrenheitBtnRef.current.disabled = true;
   },[])
 
+
+
   const celsiusBtn = () =>{
+       
+      setWhichTemp(false);
+       
       fahrenheitBtnRef.current.disabled = false;
 
       celiusBtnRef.current.className = "btn btn-rounded active"
@@ -67,11 +73,14 @@ export default function HeaderBtn({
       tempMinAftermorrow = convertFtoC(tempMinAftermorrow)
       setMinAftermorrow(`${tempMinAftermorrow}°C`)
       
-
-      setWhichTemp(false);
+      setBtnCities(<p>Please search again to see the results in <span>CELSIUS</span></p>)
+      
   } 
 
   const fahrenheitBtn = () =>{
+
+    setWhichTemp(true);
+
     celiusBtnRef.current.disabled = false;
 
     fahrenheitBtnRef.current.className = "btn btn-rounded active" 
@@ -109,10 +118,7 @@ export default function HeaderBtn({
       tempMinAftermorrow = convertCtoF(tempMinAftermorrow)
       setMinAftermorrow(`${tempMinAftermorrow}°F`)
 
-
-    setWhichTemp(true);
-
-
+      setBtnCities(<p>Please search again to see the results in <span>FARENHEIT</span></p>)
 
   }
 

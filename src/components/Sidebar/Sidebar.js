@@ -40,7 +40,9 @@ export default function Sidebar({
   setMaxOvermorrow,
   setMinOvermorrow,
   setMaxAftermorrow,
-  setMinAftermorrow
+  setMinAftermorrow,
+  btnCities,
+  setBtnCities,
 }){
     const navSearch = useRef();
     const searchResultRef = useRef();
@@ -91,13 +93,13 @@ export default function Sidebar({
         console.log('this is our response data:',json)
         console.log("cityName: ", json.name);
 
-         setCity(json.name);
+        setCity(`${json.name} ${json.sys.country}`);
 
          setLatitude(json.coord.lat);
          setLongitude(json.coord.lon);
 
          let farenheit = convertKtoF(json.main.temp)
-
+        
          let celsius = convertFtoC(farenheit);
      
          whichTemp ? setTemp(`${farenheit}°F`) : setTemp(`${celsius}°C`);
@@ -112,7 +114,8 @@ export default function Sidebar({
          setHumidity(json.main.humidity)
          setVisibility(convertMetersToMiles(json.visibility))
          setPressure(json.main.pressure)
-
+         
+         console.log("Temp State first render:" , whichTemp)
          
         } catch (err) {
           let message = err.statusText || "An error has ocurred";
@@ -134,26 +137,32 @@ export default function Sidebar({
 
      if(cityInfo !== "Not found"){
 
-      setCityResult(`${city} LOCATED!`)
-
-      getCityWeather(cityInfo);
-
-     setTimeout(displaySearch,1000);
-     setTimeout(displaySearch,1000);
+      setBtnCities(<CityOptions cityInfo={cityInfo}/>)
 
      } else{
-      setCityResult(`${city} Not Found`)
-      cityValue.current.value = "";
+       setCityResult(`${city} Not Found`)
+       cityValue.current.value = "";
      }
+
+
    }
    
    const locateCity = (city) => {
      let cityData = "Not found";
+     let regexCity = new RegExp(city,"i","g");
+     let cityArr = [];
+
      cityList.map((element) =>{
-       if(element.name === city){
-        cityData = element;
-       }})
-     return cityData   
+      let cityMatch = regexCity.test(element.name);
+      if(cityMatch){
+        cityArr.push(element);
+      }})
+      
+      if(cityArr.length === 0){
+        return cityData
+      } else {
+        return cityArr
+      }
    }
    
    const getCityWeather = async (cityInfo) => {
@@ -164,7 +173,7 @@ export default function Sidebar({
     console.log('this is our response data:',json)
     console.log("cityName: ", json.name);
      
-     setCity(json.name);
+     setCity(`${json.name} ${json.sys.country}`);
 
      setLatitude(json.coord.lat);
      setLongitude(json.coord.lon);
@@ -172,7 +181,9 @@ export default function Sidebar({
      let farenheit = convertKtoF(json.main.temp);
      
      let celsius = convertFtoC(farenheit);
-     
+
+     console.log("Temp State before render:" , whichTemp)
+
      whichTemp ? setTemp(`${farenheit}°F`) : setTemp(`${celsius}°C`);
 
      setWeather(json.weather[0].description)
@@ -290,7 +301,56 @@ const getNextFourDaysForecast = async() =>{
   }
  }
 
+ const CityOptions = ({cityInfo}) => {
+  
+   console.log("This is the city info for real bro:" ,  cityInfo)
 
+    return(
+      <div className='cityList'>
+       {
+        cityInfo.map((element,index) =>(
+          <button className={`city${element.id}`} 
+          data-cityname={element.name}
+          data-cityid={element.id}
+          data-citystate={element.state}
+          data-citycountry={element.country}
+          data-citycoordlon={element.coord.lon}
+          data-citycoordlat={element.coord.lat}
+          onClick={selectedClick}
+          key={index}
+          >{`City: ${element.name} Country: ${element.country}`}</button>
+          ))
+       }
+      </div>
+    ) 
+  
+} 
+
+const selectedClick = (e) =>{
+
+  console.log("this is the btn selected", e.target);
+      let cityIndexInfo = {
+      "id": e.target.dataset.cityid,
+      "name": e.target.dataset.cityname,
+      "state": e.target.dataset.citystate,
+      "country": e.target.dataset.citycountry,
+      "coord": {
+               "lon": e.target.dataset.citycoordlon,
+               "lat": e.target.dataset.citycoordlat
+      }
+    }
+    
+    console.log("This is the Data in dataset of the city:", cityIndexInfo)
+
+    e.target.disabled = true;
+     
+    setCityResult(`${cityIndexInfo.name} LOCATED!`);
+
+    getCityWeather(cityIndexInfo);
+
+    navSearch.current.scroll(0,0);
+
+}
 
     return(
         <>
@@ -308,6 +368,9 @@ const getNextFourDaysForecast = async() =>{
         <div className='search-results'>
         <p ref={searchResultRef} className="cityResult">{cityResult}</p>
         </div>  
+
+        {btnCities}
+
         </nav>
 
         <aside className='sidebarContainer'>
